@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineTest.Models;
 
@@ -11,9 +12,11 @@ using OnlineTest.Models;
 namespace OnlineTest.Models.Migrations
 {
     [DbContext(typeof(OnlineTestContext))]
-    partial class OnlineTestContextModelSnapshot : ModelSnapshot
+    [Migration("20230328044021_aftersubmit")]
+    partial class aftersubmit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +72,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TestLinks", (string)null);
+                    b.ToTable("TestLinks");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.Answer", b =>
@@ -95,7 +98,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Answers", (string)null);
+                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.AnswerSheet", b =>
@@ -120,7 +123,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AnswerSheets", (string)null);
+                    b.ToTable("AnswerSheets");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.Question", b =>
@@ -164,7 +167,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("TestId");
 
-                    b.ToTable("Questions", (string)null);
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.QuestionAnswerMap", b =>
@@ -201,7 +204,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("TestId");
 
-                    b.ToTable("QuestionAnswerMapping", (string)null);
+                    b.ToTable("QuestionAnswerMapping");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.RToken", b =>
@@ -230,7 +233,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RTokens", (string)null);
+                    b.ToTable("RTokens");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.Role", b =>
@@ -248,7 +251,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.Technology", b =>
@@ -280,7 +283,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Technologies", (string)null);
+                    b.ToTable("Technologies");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.Test", b =>
@@ -318,7 +321,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("TechnologyId");
 
-                    b.ToTable("Tests", (string)null);
+                    b.ToTable("Tests");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.User", b =>
@@ -354,7 +357,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("OnlineTest.Models.UserRole", b =>
@@ -377,7 +380,7 @@ namespace OnlineTest.Models.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoles", (string)null);
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("OnlineTest.Model.TestLink", b =>

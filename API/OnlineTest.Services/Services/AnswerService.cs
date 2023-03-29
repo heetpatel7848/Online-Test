@@ -98,8 +98,8 @@ namespace OnlineTest.Services.Services
                     response.Error = "Question not found";
                     return response;
                 }
-                var existFlag = _answerRepository.IsAnswerExists(answer.TestId, answer.QuestionId, answer.Ans);
-                if (existFlag)
+                var existFlag = _answerRepository.AnswerExists(answer.TestId, answer.QuestionId, answer.Ans);
+                if (existFlag != null)
                 {
                     response.Status = 400;
                     response.Message = "Not Created";
@@ -152,8 +152,8 @@ namespace OnlineTest.Services.Services
                     response.Error = "Answer not found";
                     return response;
                 }
-                var existFlag = _answerRepository.IsAnswerExists(answer.TestId, answer.QuestionId, answer.Ans);
-                if (existFlag)
+                var existFlag = _answerRepository.AnswerExists(answer.TestId, answer.QuestionId, answer.Ans);
+                if(existFlag == null)
                 {
                     response.Status = 400;
                     response.Message = "Not Updated";

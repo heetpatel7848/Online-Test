@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTest.Model
 {
-    public class TestEmailLink
+    public class TestLink
     {
         public int Id { get; set; }
         public Guid Token { get; set; }

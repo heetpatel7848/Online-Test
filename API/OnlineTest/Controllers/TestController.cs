@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineTest.Services.DTO.AddDTO;
 using OnlineTest.Services.DTO.UpdateDTO;
 using OnlineTest.Services.Interfaces;
+using System.Security.Claims;
 
 namespace OnlineTest.Controllers
 {
@@ -58,6 +59,25 @@ namespace OnlineTest.Controllers
         {
             return Ok(_testService.DeleteTest(id));
         }
+
+        [HttpPost("link")]
+        public IActionResult AddTestLink(int testId, string email)
+        {
+            return Ok(_testService.AddTestLink(Convert.ToInt32(User.FindFirstValue("Id")), testId, email));
+        }
+        [HttpGet("link")]
+        public IActionResult GetTestByLink(Guid token, string email)
+        {
+            return Ok(_testService.GetTestByLink(token, email));
+        }
+
+        [HttpPost("submit")]
+        public IActionResult SubmitTest(AddAnswerSheetDTO answerSheet)
+        {
+            return Ok(_testService.SubmitTest(answerSheet));
+        }
         #endregion
+
+
     }
 }

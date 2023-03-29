@@ -26,7 +26,9 @@ namespace OnlineTest.Models
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<QuestionAnswerMap> QuestionAnswerMapping { get; set; }
+        public DbSet<TestLink> TestLinks { get; set; }
+        public DbSet<AnswerSheet>AnswerSheets { get; set; }
 
-        public DbSet<TestEmailLink> TestEmailLinks { get; set; } 
+
     }
 }

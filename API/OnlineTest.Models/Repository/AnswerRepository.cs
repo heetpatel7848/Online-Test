@@ -42,20 +42,17 @@ namespace OnlineTest.Models.Repository
             return _context.Answers.FirstOrDefault(a => a.Id == id && a.IsActive == true);
         }
 
-        public bool IsAnswerExists(int testId, int questionId, string ans)
+        Answer IAnswerRepository.AnswerExists(int testId, int questionId, string ans)
         {
             var result = (from qam in _context.QuestionAnswerMapping
-                     join a in _context.Answers
-                     on qam.AnswerId equals a.Id
-                     where qam.TestId == testId && qam.QuestionId == questionId && a.Ans == ans
-                     select new
-                     {
-                         Id = qam.Id
-                     }).FirstOrDefault();
-            if (result != null)
-                return true;
-            else
-                return false;
+                          join a in _context.Answers
+                          on qam.AnswerId equals a.Id
+                          where qam.TestId == testId && qam.QuestionId == questionId && a.Ans == ans
+                          select new Answer
+                          {
+                              Id = a.Id
+                          }).FirstOrDefault();
+            return result;
         }
 
         public int AddAnswer(Answer answer)

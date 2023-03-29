@@ -46,6 +46,12 @@ namespace OnlineTest.Services.AutoMapperProfile
             CreateMap<AddAnswerDTO, Answer>();
             CreateMap<UpdateAnswerDTO, Answer>();
             #endregion
+
+            #region AnswerSheet
+            //CreateMap<AnswerSheet, GetAnswerSheetDTO>();
+            CreateMap<AddAnswerSheetDTO, Answer>();
+            //CreateMap<UpdateAnswerSheetDTO, Answer>();
+            #endregion
         }
     }
 }
