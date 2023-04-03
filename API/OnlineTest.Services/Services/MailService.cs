@@ -1,10 +1,12 @@
-﻿using MailKit.Net.Smtp;
+﻿//using MailKit.Net.Smtp;
+using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
+using OnlineTest.Services.Interfaces;
 
-namespace SendEmailDemo.Service
+namespace OnlineTest.Services.Services
 {
-    public class MailService : Interface.IMailService
+    public class MailService : IMailService
     {
         public void SendEmail(string email)
         {

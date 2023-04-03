@@ -1,4 +1,3 @@
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +9,7 @@ using OnlineTest.Models.Repository;
 using OnlineTest.Services.AutoMapperProfile;
 using OnlineTest.Services.Interfaces;
 using OnlineTest.Services.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +75,11 @@ builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 builder.Services.AddScoped<IQuestionAnswerMapRepository, QuestionAnswerMapRepository>();
 builder.Services.AddScoped<ITestLinkRepository, TestLinkRepository>();
 builder.Services.AddScoped<IAnswerSheetRepository, AnswerSheetRepository>();
+builder.Services.AddScoped<IMailOutboundRepository, MailOutboundRepository>();
+
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+
+
 
 
 #endregion

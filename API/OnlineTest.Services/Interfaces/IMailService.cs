@@ -1,4 +1,4 @@
-﻿namespace SendEmailDemo.Interface
+﻿namespace OnlineTest.Services.Interfaces
 {
     public interface IMailService
     {

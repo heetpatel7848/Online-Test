@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MailKit;
 using OnlineTest.Model;
 using OnlineTest.Model.Interface;
 using OnlineTest.Models;
@@ -23,12 +24,14 @@ namespace OnlineTest.Services.Services
         private readonly IUserRepository _userRepository;
         private readonly IUserRoleRepository _userRoleRepository;
         private readonly IAnswerSheetRepository _answerSheetRepository;
+        private readonly IMailOutboundRepository _mailOutboundRepository;
+     
 
 
         #endregion
 
         #region Constructor
-        public TestService(IMapper mapper, ITestRepository testRepository, IAnswerSheetRepository answerSheetRepository, IUserRoleRepository userRoleRepository, IQuestionRepository questionRepository, IAnswerRepository answerRepository, ITechnologyRepository technologyRepository, ITestLinkRepository testLinkRepository, IUserRepository userRepository)
+        public TestService(IMapper mapper, ITestRepository testRepository,IMailOutboundRepository mailOutboundRepository, IAnswerSheetRepository answerSheetRepository, IUserRoleRepository userRoleRepository, IQuestionRepository questionRepository, IAnswerRepository answerRepository, ITechnologyRepository technologyRepository, ITestLinkRepository testLinkRepository, IUserRepository userRepository)
         {
             _mapper = mapper;
             _testRepository = testRepository;
@@ -39,6 +42,8 @@ namespace OnlineTest.Services.Services
             _userRepository = userRepository;
             _userRoleRepository = userRoleRepository;
             _answerSheetRepository = answerSheetRepository;
+            _mailOutboundRepository = mailOutboundRepository;
+            
 
         }
         #endregion
@@ -337,9 +342,7 @@ namespace OnlineTest.Services.Services
                     response.Error = "Could not add test link";
                     return response;
                 }
-                response.Status = 201;
-                response.Message = "Created";
-                response.Data = testLinkId;
+                
             }
             catch (Exception e)
             {
@@ -440,13 +443,14 @@ namespace OnlineTest.Services.Services
                     };
                     answerSheets.Add(sheet);
                 }
-                _answerSheetRepository.AddAnswerSheet(answerSheets);
-                //testLink.SubmitedOn = DateTime.UtcNow;
+               _answerSheetRepository.AddAnswerSheet(answerSheets);
+                testLink.SubmitedOn = DateTime.UtcNow;
                 _testLinkRepository.UpdateTestLink(testLink);
                 response.Status = 200;
                 response.Message = "Ok";
+                response.Data = answerSheets;
             }
-            catch (Exception e)
+             catch (Exception e)
             {
                 response.Status = 500;
                 response.Message = "Internal Server Error";

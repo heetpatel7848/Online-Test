@@ -17,9 +17,9 @@ namespace OnlineTest.Models.Repository
             _context = context;
         }
 
-        public bool AddAnswerSheet(List<AnswerSheet> AnswerSheets)
+        public bool AddAnswerSheet(List<AnswerSheet> answerSheets)
         {
-            _context.Add(AnswerSheets);
+            _context.AddRange(answerSheets);
              return _context.SaveChanges() > 0;
             
         }
